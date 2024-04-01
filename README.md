@@ -13,11 +13,12 @@ On top of that it provides a TypeScript flavored compose function for easier com
 ## Why still use higher order components?
 
 With the introduction of hooks many React developers have considered higher order components to be obsolite. 
-Hooks make components very composable. A role that hooks can't fulfill however is the role of a guard. 
+Hooks make components very composable, however a role that hooks can't fulfill is the role of a being a guard. 
+
 In many applications I've found it to be useful for encapsulating loading and error states. 
 Just wrap a component with `withAsync` and you don't have to worry about a variable being nullable/undefined or not being available yet.
 
-I've found it useful to define these states as "unwanted states". 
+I've found it useful to define these states as _"unwanted states"_. 
 What you really care about is to render the component, show the information, not to handle these undesired states.
 
 Many components could be wrapped with a guard:
@@ -26,8 +27,8 @@ Many components could be wrapped with a guard:
 - Don't want to render a component and redirect based on a prop? `withRedirect` will serve you well!
 - Don't want to deal with async pending- and loading- states? `withAsync` handles it for you!
 
-Friendly reminder that they still come with the disadvantage of being harder to debug compared to hooks. 
-So use higher order components when it is useful to decrease complexity in an application.
+**Friendly reminder that they still come with the disadvantage of being harder to debug compared to hooks. 
+So use higher order components when it is useful to decrease complexity in an application.**
 
 ## Possible planned HOCs and Hooks
 
