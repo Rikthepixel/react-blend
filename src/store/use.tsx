@@ -56,8 +56,6 @@ export function createStore<TState extends object>(
     const store = useSyncExternalStore(subscribe, get, getInitial);
     return (selector ?? defaultSelector)(store) as ReturnType<TSelectorFn>;
   }
-
-  useStore.
-
+   
   return useStore satisfies UseStore<TState>;
 }

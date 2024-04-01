@@ -1,5 +1,5 @@
 import React from "react";
-import { named } from "./helpers";
+import { named } from "../helpers";
 
 /**
  * Creates a `withRedirect` HOC, with the given `redirectEngine`.

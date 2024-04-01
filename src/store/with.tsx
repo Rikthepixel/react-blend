@@ -1,14 +1,6 @@
 import React from "react";
-import { ExceptRequired, named } from "./helpers";
-import {
-  createStore,
-  GetFn,
-  SetFn,
-  SelectorFn,
-  UseStore,
-} from "./hooks/useStore";
-
-export { GetFn, SetFn, SelectorFn, UseStore, createStore };
+import { ExceptRequired, named } from "../helpers";
+import { createStore, GetFn, SetFn, UseStore } from "./use";
 
 /**
  * Zustand-like (flux) state management in a HOC format.

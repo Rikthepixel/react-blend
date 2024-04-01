@@ -1,6 +1,6 @@
 import React from "react";
-import { named, Except, Simplify } from "./helpers";
-import { PromiseFactory, UseAsyncOptions, useAsync } from "./hooks/useAsync";
+import { named, Except, Simplify } from "../helpers";
+import { PromiseFactory, UseAsyncOptions, useAsync } from "./use";
 
 export type PendingProps = {};
 

@@ -6,7 +6,7 @@ export type IsEqual<A, B> =
 type Filter<TKey, TExclude> =
   IsEqual<TKey, TExclude> extends true ? never : TKey;
 
-/** Like `Omit`, but it resolves */
+/** Like `Omit`, but it if combined with `Simplify` it shows the actual keys that are left on the object */
 export type Except<TObj, TExceptKey extends keyof TObj> =
   IsEqual<keyof TObj, TExceptKey> extends true
     ? {}

@@ -1,5 +1,5 @@
 import React from "react";
-import { RequiredKeysOf, SetOptional, named } from "./helpers";
+import { RequiredKeysOf, SetOptional, named } from "../helpers";
 
 export function withDefault<
   TProps extends object,

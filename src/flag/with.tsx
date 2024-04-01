@@ -1,8 +1,6 @@
 import React from "react";
-import { named } from "./helpers";
-import { FlagProvider, FlagProviderProps, useFlag } from "./hooks/useFlag";
-
-export { FlagProvider, FlagProviderProps };
+import { named } from "../helpers";
+import { useFlag } from "./use";
 
 /**
  * Prevents the `Component` from being rendered if the `expectedFlags` are not contained in the enabled flags.
