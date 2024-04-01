@@ -3,7 +3,10 @@
 A blend of useful higher order components (hocs) and hooks.
 On top of that it provides a TypeScript flavored compose function for easier component composition with hocs. 
 
-__TOC__
+- [Goals](#goals)
+- [Why use higher order components?](#why-still-use-higher-order-components)
+- [Planned HOCs and hooks](#planned-hocs-and-hooks)
+
 
 ## Goals
 
@@ -32,7 +35,47 @@ Many components could be wrapped with a guard:
 **Friendly reminder that they still come with the disadvantage of being harder to debug compared to hooks. 
 So use higher order components when it is useful to decrease complexity in an application.**
 
-## Possible planned HOCs and Hooks
+## Planned HOCs and Hooks
 
 - `withReactQuery` - Not unlike `withAsync` but using React/Tanstack query for caching and fetching. Very convenient, have used it in the past. This might be contained in a separate package since it needs a peer-dependency to tanstack query.
 - `withParams` - Take-in query/route params, `UrlSearchParams`, etc. and validate them. If they aren't valid don't show the component. Prevents invalid route states.
+
+## API reference
+
+### Compose
+
+#### Example
+```tsx
+import { compose } from "react-blend" 
+import { withDefault } from "react-blend/default";
+
+// You can use compose with any higher order component
+import { connect } from "react-redux"; 
+
+
+type MessageBubbleProps = {
+  side: "left" | "right";
+  content: string;
+};
+
+function MessageBubble(props: MessageBubbleProps) {
+  return <>{/* Display something beautiful */}</>;
+}
+
+const LeftMessageBubble = compose(MessageBubble)
+  .map((component) => withDefault(component, { side: "left" }))
+  .map(connect(mapState))
+  .build();
+```
+
+### Default
+
+### Visibility
+
+### Redirect
+
+### Flag
+
+### Store
+
+### Async
