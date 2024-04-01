@@ -3,6 +3,8 @@
 A blend of useful higher order components (hocs) and hooks.
 On top of that it provides a TypeScript flavored compose function for easier component composition with hocs. 
 
+__TOC__
+
 ## Goals
 
 - 100% type-safe 
