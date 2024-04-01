@@ -16,7 +16,8 @@ With the introduction of hooks many React developers have considered higher orde
 Hooks make components very composable. A role that hooks can't fulfill however is the role of a guard. 
 In many applications I've found it to be useful for encapsulating loading and error states. 
 Just wrap a component with `withAsync` and you don't have to worry about a variable being nullable/undefined or not being available yet.
-I've found it useful to define these states as "invalid states" or "unwanted states". 
+
+I've found it useful to define these states as "unwanted states". 
 What you really care about is to render the component, show the information, not to handle these undesired states.
 
 Many components could be wrapped with a guard:
@@ -28,7 +29,7 @@ Many components could be wrapped with a guard:
 Friendly reminder that they still come with the disadvantage of being harder to debug compared to hooks. 
 So use higher order components when it is useful to decrease complexity in an application.
 
-## Planned HOCs and Hooks
+## Possible planned HOCs and Hooks
 
-- `withReactQuery` - Not unlike `withAsync` but using React/Tanstack query for caching and fetching. Very convenient, have used it in the past
-- `withParams` - Take-in query/route params, `UrlSearchParams`, etc. and validate them. If they aren't valid don't show the component. Prevents invalid route states
+- `withReactQuery` - Not unlike `withAsync` but using React/Tanstack query for caching and fetching. Very convenient, have used it in the past. This might be contained in a separate package since it needs a peer-dependency to tanstack query.
+- `withParams` - Take-in query/route params, `UrlSearchParams`, etc. and validate them. If they aren't valid don't show the component. Prevents invalid route states.
