@@ -1,35 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { named } from "./helpers";
+import { FlagProvider, FlagProviderProps, useFlag } from "./hooks/useFlag";
 
-function containsSet(baseline: Set<string>, expected: Set<string>): boolean {
-  if (baseline.size < expected.size) return false;
-
-  for (const expectedItem of expected) {
-    if (!baseline.has(expectedItem)) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-const FlagContext = React.createContext<Set<string>>(null);
-
-export type FlagProviderProps = {
-  /**
-   * Enabled feature flags
-   */
-  flags: string[];
-  children: React.ReactNode;
-};
-
-/**
- * Provides the flags that are currently supported.
- */
-export function FlagProvider(props: FlagProviderProps) {
-  const flags = new Set(props.flags);
-  return <FlagContext.Provider value={flags} children={props.children} />;
-}
+export { FlagProvider, FlagProviderProps };
 
 /**
  * Prevents the `Component` from being rendered if the `expectedFlags` are not contained in the enabled flags.
@@ -46,8 +19,8 @@ export function withFlag<TProps extends object>(
   const expected = new Set(expectedFlags);
 
   return named(`${Component.displayName}-withFlag`, function (props) {
-    const enabled = useContext(FlagContext);
-    if (!enabled && !containsSet(enabled, expected)) return <></>;
+    const enabled = useFlag(expected);
+    if (!enabled) return <></>;
     return <Component {...props} />;
   });
 }

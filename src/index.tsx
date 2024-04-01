@@ -1,10 +1,17 @@
 import React from "react";
 
 export type ComposeChain<TComponent extends React.ComponentType<object>> = {
+  /**
+   * Apply a transformation to the given component and map it into a new one
+   */
   map<TNewComponent extends React.ComponentType<object>>(
     fn: (component: TComponent) => TNewComponent,
   ): ComposeChain<TNewComponent>;
-  unwrap(): TComponent;
+
+  /**
+   * Apply all the map functions to the component
+   */
+  build(): TComponent;
 };
 
 /** @inner */
@@ -21,7 +28,8 @@ function composeWithTransforms<
     map(fn) {
       return composeWithTransforms(component, [...transforms, fn]);
     },
-    unwrap() {
+
+    build() {
       return transforms.reduce(
         (current, mapFn) => mapFn(current),
         component,
@@ -30,6 +38,16 @@ function composeWithTransforms<
   };
 }
 
+/**
+ * Utility function that allows for more readable chaining of HOC wrappings.
+ *
+ * @example Usage 
+ * ```ts
+ * const SomeComponentWithDefault = compose(SomeComponent)
+ *    .map((c) => withDefault(c, { foo: true }))
+ *    .unwrap
+ * ```
+ */
 export function compose<TComponent extends React.ComponentType<object>>(
   component: TComponent,
 ): ComposeChain<TComponent> {
