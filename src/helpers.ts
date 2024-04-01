@@ -44,6 +44,8 @@ export type ExceptRequired<
   TReference extends object,
 > = Simplify<Except<TBase, Extract<RequiredKeysOf<TReference>, keyof TBase>>>;
 
+export type MaybePromise<T> = Promise<T> | T;
+
 export function named<T extends React.ComponentType>(
   displayName: string,
   component: T,
