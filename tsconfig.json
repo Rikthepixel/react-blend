@@ -1,14 +1,10 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "jsx": "react",
-    "target": "es2020",
-    "esModuleInterop": true,
-    "lib": [
-      "es2015",
-      "es2020",
-      "dom"
-    ],
-    "strictNullChecks": true
-  }
+    "compilerOptions": {
+        "module": "commonjs",
+        "jsx": "react",
+        "target": "es2020",
+        "esModuleInterop": true,
+        "lib": ["es2015", "es2020", "dom"],
+        "strictNullChecks": true
+    }
 }

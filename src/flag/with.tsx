@@ -11,14 +11,14 @@ import { useFlag } from "./use";
  * @param expectedFlags - A list of flags that all need to be enabled for this component to be able to render
  */
 export function withFlag<TProps extends object>(
-  Component: React.ComponentType<TProps>,
-  expectedFlags: string[],
+    Component: React.ComponentType<TProps>,
+    expectedFlags: string[],
 ): React.FC<TProps> {
-  const expected = new Set(expectedFlags);
+    const expected = new Set(expectedFlags);
 
-  return named(`${Component.displayName}-withFlag`, function (props) {
-    const enabled = useFlag(expected);
-    if (!enabled) return <></>;
-    return <Component {...props} />;
-  });
+    return named(`${Component.displayName}-withFlag`, function (props) {
+        const enabled = useFlag(expected);
+        if (!enabled) return <></>;
+        return <Component {...props} />;
+    });
 }
